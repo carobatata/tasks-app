@@ -1,5 +1,6 @@
 package com.example.taskapp
 
+import androidx.compose.runtime.snapshots.SnapshotApplyResult
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.taskapp.model.TaskRepository
@@ -28,7 +29,12 @@ class TaskViewModel @Inject constructor(private val repository: TaskRepository) 
     fun getAllTasks() {
         viewModelScope.launch {
             val result = repository.getAll()
-            _tasksList.value = result
+            if (result.isSuccess) {
+                _tasksList.value = result.getOrNull() ?: emptyList()
+            } else {
+                throw Exception("Error getting tasks")
+            }
+
         }
     }
 
