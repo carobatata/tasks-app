@@ -31,4 +31,10 @@ class TaskViewModel @Inject constructor(private val repository: TaskRepository) 
             _tasksList.value = result
         }
     }
+
+    fun deleteTask(task: Task) {
+        viewModelScope.launch {
+            repository.delete(task)
+        }
+    }
 }

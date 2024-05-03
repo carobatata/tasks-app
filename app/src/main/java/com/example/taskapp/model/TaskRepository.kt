@@ -1,6 +1,5 @@
 package com.example.taskapp.model
 
-import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class TaskRepository @Inject constructor(private val dao: TaskDAO) {
@@ -11,5 +10,9 @@ class TaskRepository @Inject constructor(private val dao: TaskDAO) {
 
     suspend fun getAll() : List<Task> {
         return dao.getAll()
+    }
+
+    suspend fun delete(task: Task) {
+        return dao.delete(task)
     }
 }

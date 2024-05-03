@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    TaskScreen(viewModel::addTask, taskList, viewModel::getAllTasks)
+                    TaskScreen(viewModel::addTask, taskList, viewModel::getAllTasks, viewModel::deleteTask)
                 }
             }
         }
