@@ -70,27 +70,7 @@ fun TaskScreen(
         LazyColumn {
             items(taskListUiState.size) {
                 Column(Modifier.padding(5.dp)) {
-                    OutlinedCard(
-                        Modifier.padding(5.dp),
-                        border = BorderStroke(1.5.dp, Color.DarkGray)
-                    ) {
-                        Column(Modifier.padding(16.dp)) {
-                            Row {
-                                Text(text = "ID: ${taskListUiState[it].taskId}", fontSize = 18.sp)
-                                Spacer(modifier = Modifier.weight(1f))
-                                Icon(
-                                    imageVector = Icons.Filled.Delete,
-                                    contentDescription = "delete task icon",
-                                    modifier = Modifier.clickable {
-                                        deleteTask(taskListUiState[it])
-                                        renderListAgain = true
-                                    }
-                                )
-                            }
-                            Text(text = "Name: ${taskListUiState[it].taskName}", fontSize = 18.sp)
-                            Text(text = "Complete: ${taskListUiState[it].isDone}", fontSize = 18.sp)
-                        }
-                    }
+                    TaskCard(taskListUiState, it, deleteTask, renderListAgain)
                 }
             }
         }

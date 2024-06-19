@@ -16,4 +16,4 @@ data class Task(
 
 //PrimaryKey is to identify single record, cannot contain duplicate values.
 // Task is the data class which defines a table
-// task DAO is the interdace which specifies the data access method.
+// task DAO is the interface which specifies the data access method.
